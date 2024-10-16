@@ -2,8 +2,6 @@ stages:
   - publish
   - deploy
 
-include:
-  - local: "gitversion-ci-cd-plugin-extension.gitlab-ci.yml"
 
 workflow:
   rules:
@@ -28,7 +26,7 @@ package-publish-helm:
   dependencies:
     - determineversion
   script:
-    - export VERSION=$GitVersion_MajorMinorPatch
+    - export VERSION=$CI_COMMIT_TAG
     # Echo pour débogage des variables d'environnement
     - 'echo "VERSION: $VERSION"'
     - 'echo "CHART_NAME: $CHART_NAME"'
