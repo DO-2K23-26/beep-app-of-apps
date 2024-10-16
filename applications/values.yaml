@@ -4,7 +4,7 @@ global:
 applications:
   - name: "doc"
     project: "beep"
-    chart: "beep-doc"
+    chart: "beep-docs"
     destination: "https://162.38.112.211:6443"
     repoURL: "https://gitlab.polytech.umontpellier.fr/api/v4/projects/3505/packages/helm/production"
     namespace: "beep-production"
