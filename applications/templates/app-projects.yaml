@@ -1,20 +1,20 @@
+{{- range .Values.applications }}
 apiVersion: argoproj.io/v1alpha1
-kind: AppProject
+kind: Application
 metadata:
-  name: prod-apps
+  name: {{ .name }}
   namespace: argocd
 spec:
-  clusterResourceWhitelist:
-    - group: "*"
-      kind: "*"
-  description: Project containing all production applications for argocd
-  destinations:
-    - namespace: "*"
-      server: "*"
-  namespaceResourceWhitelist:
-    - group: "*"
-      kind: "*"
-  orphanedResources:
-    warn: true
-  sourceRepos:
-    - "*"
+  project: {{ .project }}
+  source:
+    repoURL: {{ .repoURL }}
+    targetRevision: {{ .targetRevision }}
+    chart: {{ .chart }}
+  destination:
+    server: {{ .destination }}
+    namespace: {{ .namespace }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+{{- end }}

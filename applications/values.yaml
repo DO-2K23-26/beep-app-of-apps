@@ -1,12 +1,11 @@
 global:
   namespace: "argocd"
 
-environments:
-  - name: "production"
+applications:
+  - name: "doc"
+    project: "beep"
+    chart: "beep-doc"
+    destination: "https://kubernetes.default.svc"
+    repoURL: "https://gitlab.polytech.umontpellier.fr/api/v4/projects/3505/packages/helm/production"
     namespace: "beep-production"
-    applications:
-      - name: "doc"
-        chart: "beep-doc"
-        destination: "https://kubernetes.default.svc"
-        repoURL: "https://gitlab.polytech.umontpellier.fr/api/v4/projects/3505/packages/helm/production"
-        targetRevision: "*"
+    targetRevision: "HEAD"
