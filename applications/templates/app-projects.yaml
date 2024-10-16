@@ -2,17 +2,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ .name }}
+  name: "{{ .name }}"
   namespace: argocd
 spec:
-  project: {{ .project }}
+  project: "{{ .project }}"
   source:
-    repoURL: {{ .repoURL }}
-    targetRevision: {{ .targetRevision }}
-    chart: {{ .chart }}
+    repoURL: "{{ .repoURL }}"
+    targetRevision: "{{ .targetRevision }}"
+    chart: "{{ .chart }}"
   destination:
-    server: {{ .destination }}
-    namespace: {{ .namespace }}
+    server: "{{ .destination }}"
+    namespace: "{{ .namespace }}"
   syncPolicy:
     automated:
       prune: true
