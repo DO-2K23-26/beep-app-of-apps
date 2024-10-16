@@ -32,8 +32,8 @@ package-publish-helm:
     # Echo pour débogage des variables d'environnement
     - 'echo "VERSION: $VERSION"'
     - 'echo "CHART_NAME: $CHART_NAME"'
-    # Modifier le fichier values.yaml
-    # Vérifier le contenu de values.yaml après modification
+    # Modifier la version du chart
+    - sed "s/version: 0.1.0/version: $VERSION/g" applications/Chart.yaml
     - helm package applications --version $VERSION --app-version $VERSION
     - 'curl --request POST --user gitlab-ci-token:$CI_JOB_TOKEN --form "chart=@$CHART_NAME-$VERSION.tgz" "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/helm/api/$DEPLOY_VARIABLE/charts"'
   environment:
