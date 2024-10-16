@@ -11,7 +11,6 @@ workflow:
       variables:
         DEPLOY_VARIABLE: production
         CHART_NAME: beep-app-of-apps
-    - if: '$CI_PIPELINE_SOURCE == "push"'
 
 determineversion:
   stage: .pre
