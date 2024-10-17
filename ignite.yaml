@@ -9,6 +9,10 @@ spec:
     repoURL: "https://gitlab.polytech.umontpellier.fr/api/v4/projects/3726/packages/helm/production"
     chart: beep-app-of-apps
     targetRevision: "*"
+    helm:
+      valueFiles:
+        - values.yaml
+        - staging.yaml
   destination:
     server: "https://162.38.112.211:6443"
     namespace: argocd
